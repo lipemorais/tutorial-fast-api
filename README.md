@@ -10,6 +10,24 @@ Este é um tutorial prático e introdutório onde você vai aprender a criar sua
 **Nível:** Iniciante
 **Pré-requisitos:** Conhecimento básico de Python (funções, dicionários, listas)
 
+## Sobre o Instrutor
+
+**Felipe de Morais** (FeliPython)
+
+Senior Software Engineer com vários anos de experiência em desenvolvimento de software, especializado em criar e desenvolver projetos web de larga escala. Co-fundador da AfroPython, uma iniciativa que promove diversidade e inclusão na comunidade tech brasileira.
+
+**Reconhecimentos:**
+- 🏅 **PSF Fellow** - Python Software Foundation (2024)
+- 🏆 **PSF Community Service Award** - Q2 2019
+- 🏵️ **Prêmio Dorneles Treméa/Jean Ferri** - Associação Python Brasil (2020)
+
+Felipe tem mais de 1 ano de experiência prática com FastAPI, é apaixonado por testes, desenvolvimento de APIs e por fazer a comunidade Python crescer através de ensino e contribuições open source.
+
+**Contato:**
+- 💼 [LinkedIn](https://www.linkedin.com/in/felipe-de-morais)
+- 🐙 [GitHub](https://github.com/lipedemorais)
+- 📧 felipejpa15@gmail.com
+
 ## O que você vai aprender
 
 - Criar seus primeiros endpoints (GET, POST)
@@ -20,8 +38,9 @@ Este é um tutorial prático e introdutório onde você vai aprender a criar sua
 
 ## Estrutura do Tutorial
 
-Este tutorial está organizado em 5 etapas progressivas:
+Este tutorial está organizado em 6 etapas progressivas:
 
+0. **[00-introducao](./00-introducao/)** - O que são frameworks web e a história do FastAPI
 1. **[01-hello-world](./01-hello-world/)** - Sua primeira API em 5 linhas de código
 2. **[02-rotas-get](./02-rotas-get/)** - Criando rotas GET com parâmetros
 3. **[03-rotas-post](./03-rotas-post/)** - Recebendo dados com POST
@@ -67,9 +86,9 @@ source .venv/bin/activate  # No Windows: .venv\Scripts\activate
 
 ## Como usar este tutorial
 
-1. Comece pela pasta `01-hello-world`
+1. Comece pela pasta `00-introducao` para entender o contexto
 2. Leia o `README.md` de cada etapa
-3. Execute o código
+3. Execute o código (a partir da etapa 01)
 4. Experimente modificá-lo
 5. Passe para a próxima etapa quando se sentir confortável
 
