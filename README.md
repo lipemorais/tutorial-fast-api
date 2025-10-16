@@ -99,11 +99,17 @@ uv run fastapi dev 01-hello-world/main.py
 
 ## Testando as APIs
 
-Durante o tutorial, você vai aprender a testar suas APIs de três formas:
+Durante o tutorial, você vai aprender a testar suas APIs de forma visual e interativa:
 
-1. **Navegador** - Para rotas GET simples
-2. **Documentação automática** - Swagger UI em `http://localhost:8000/docs`
-3. **Linha de comando** - Com curl ou httpie (scripts incluídos em `scripts/`)
+- 🌐 **Navegador** - Para rotas GET simples
+  - Digite a URL e veja o JSON retornado
+  - Perfeito para testes rápidos
+
+- 🎯 **Swagger UI** - Documentação interativa em `http://localhost:8000/docs`
+  - Teste todas as rotas (GET, POST, PUT, DELETE) clicando em botões
+  - Veja validações em tempo real
+  - Sem precisar instalar ferramentas extras
+  - Interface amigável para iniciantes!
 
 ## Recursos Adicionais
 

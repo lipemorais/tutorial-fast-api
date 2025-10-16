@@ -56,16 +56,24 @@ O que significa cada parte:
 - `main.py` - arquivo Python que contém sua aplicação
 - O modo `dev` já inclui auto-reload automático quando você modificar o código
 
-### 2. Acesse a API
+### 2. Teste sua primeira API!
 
-Abra seu navegador em: http://localhost:8000
+#### Opção 1: Direto no navegador
 
-Você deve ver:
+Rotas GET podem ser testadas diretamente no navegador! Abra:
+
+http://localhost:8000
+
+Você verá o JSON retornado:
 ```json
 {
   "mensagem": "Olá, Python Brasil 2025! 🐍"
 }
 ```
+
+💡 **Dica:** O navegador sempre faz requisições GET quando você digita uma URL.
+
+#### Opção 2: Documentação interativa (recomendado)
 
 ### 3. Explore a documentação automática (Swagger UI)
 

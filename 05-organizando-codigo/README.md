@@ -98,71 +98,124 @@ Arquivo principal que:
 uv run fastapi dev 05-organizando-codigo/main.py
 ```
 
-### 2. Explore a documentação
+### 2. Explore a documentação organizada
 
-http://localhost:8000/docs
+Acesse: http://localhost:8000/docs
 
-**Observe:**
-- As rotas estão agrupadas por tags (raiz, livros, autores)
+**Observe a organização perfeita:**
+- 🏠 **raiz** - Rota principal
+- 📚 **livros** - Todas as operações de livros agrupadas
+- ✍️ **autores** - Todas as operações de autores agrupadas
 - Cada grupo pode ser expandido/recolhido
-- Navegação muito mais organizada!
+- Navegação muito mais clara!
 
-## Fluxo Completo de Teste
+## Testando a API Completa
 
-### Testando Livros
+### 1. Testando Livros (CRUD Completo)
 
-```bash
-# Criar livro
-curl -X POST http://localhost:8000/livros/ \
-  -H "Content-Type: application/json" \
-  -d '{
-    "titulo": "Python Fluente",
-    "autor": "Luciano Ramalho",
-    "ano": 2015,
-    "paginas": 792
-  }'
+#### Criar livro
+1. Expanda a seção **livros**
+2. Clique em `POST /livros/`
+3. **"Try it out"**
+4. Use este exemplo:
+   ```json
+   {
+     "titulo": "Python Fluente",
+     "autor": "Luciano Ramalho",
+     "ano": 2015,
+     "paginas": 792
+   }
+   ```
+5. **"Execute"** → Sucesso! ✅
 
-# Listar livros
-curl http://localhost:8000/livros/
+**Crie mais livros:**
+- "Fluent Python 2nd Edition" - Luciano Ramalho - 2022 - 1000 páginas
+- "Python Cookbook" - David Beazley - 2013 - 706 páginas
 
-# Obter livro específico
-curl http://localhost:8000/livros/1
+#### Listar todos os livros
 
-# Atualizar livro
-curl -X PUT http://localhost:8000/livros/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "titulo": "Python Fluente - 2ª Edição",
-    "autor": "Luciano Ramalho",
-    "ano": 2022,
-    "paginas": 1000
-  }'
+**No navegador:** http://localhost:8000/livros/
 
-# Filtrar por disponibilidade
-curl http://localhost:8000/livros/?disponivel=true
+**Ou no `/docs`:**
+1. `GET /livros/` → **"Try it out"** → **"Execute"**
+2. Veja todos os livros que você criou!
 
-# Deletar livro
-curl -X DELETE http://localhost:8000/livros/1
-```
+#### Filtrar livros disponíveis
 
-### Testando Autores
+**No navegador:** http://localhost:8000/livros/?disponivel=true
 
-```bash
-# Criar autor
-curl -X POST http://localhost:8000/autores/ \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "Luciano Ramalho",
-    "email": "luciano@example.com",
-    "biografia": "Programador Python há mais de 20 anos"
-  }'
+**Ou no `/docs`:**
+1. `GET /livros/` → **"Try it out"**
+2. Marque o checkbox `disponivel` como `true`
+3. **"Execute"** → Veja apenas livros disponíveis
 
-# Listar autores
-curl http://localhost:8000/autores/
+#### Obter livro específico
 
-# Obter autor específico
-curl http://localhost:8000/autores/1
-```
+**No navegador:** http://localhost:8000/livros/1
+
+**Ou no `/docs`:**
+1. `GET /livros/{id}` → **"Try it out"**
+2. Digite ID: **1**
+3. **"Execute"**
+
+#### Atualizar livro
+1. `PUT /livros/{id}` → **"Try it out"**
+2. ID: **1**
+3. Edite para 2ª edição:
+   ```json
+   {
+     "titulo": "Python Fluente - 2ª Edição",
+     "autor": "Luciano Ramalho",
+     "ano": 2022,
+     "paginas": 1000
+   }
+   ```
+4. **"Execute"** → Atualizado! ✅
+
+#### Deletar livro
+1. `DELETE /livros/{id}` → **"Try it out"**
+2. ID: **3**
+3. **"Execute"** → Deletado! ✅
+4. Liste todos novamente - livro sumiu!
+
+### 2. Testando Autores
+
+#### Criar autor
+1. Expanda a seção **autores**
+2. `POST /autores/` → **"Try it out"**
+3. Use este exemplo:
+   ```json
+   {
+     "nome": "Luciano Ramalho",
+     "email": "luciano@example.com",
+     "biografia": "Programador Python há mais de 20 anos, palestrante e autor técnico"
+   }
+   ```
+4. **"Execute"** → Criado! ✅
+
+**Crie mais autores:**
+- David Beazley - david@example.com - "Expert em Python e sistemas"
+- Brett Slatkin - brett@example.com - "Software Engineer no Google"
+
+#### Listar e obter autores
+
+**No navegador:**
+- http://localhost:8000/autores/ - Lista todos
+- http://localhost:8000/autores/1 - Autor específico
+
+**Ou no `/docs`:**
+1. `GET /autores/` → Veja todos
+2. `GET /autores/{id}` → Veja um específico
+
+### 3. Observe a organização
+
+**Veja como é fácil navegar:**
+- Todas as rotas de livros estão juntas
+- Todas as rotas de autores estão juntas
+- Cada seção tem cor diferente
+- Documentação clara e organizada
+
+Imagine adicionar mais recursos (empréstimos, avaliações, etc.) - cada um teria sua própria seção!
 
 ## Entendendo o Código
 
@@ -257,12 +310,54 @@ No `/docs`, você verá seções separadas:
   - README.md
 ```
 
-## Experimente
+## Experimente (e teste no /docs!)
 
-1. **Adicione um novo recurso** - Crie um router para "empréstimos"
-2. **Separe os routers** - Coloque cada router em um arquivo diferente (routers/livros.py, routers/autores.py)
-3. **Adicione dependências** - Crie uma função de autenticação e use em rotas específicas
-4. **Adicione middleware** - Registre logs de todas as requisições
+1. **Adicione um novo recurso "empréstimos":**
+   ```python
+   router_emprestimos = APIRouter(
+       prefix="/emprestimos",
+       tags=["empréstimos"]
+   )
+
+   @router_emprestimos.post("/")
+   def criar_emprestimo(livro_id: int, usuario: str):
+       ...
+   ```
+   - Inclua no app: `app.include_router(router_emprestimos)`
+   - Veja a nova seção aparecer no `/docs`!
+   - Teste criando empréstimos
+
+2. **Separe os routers em arquivos:**
+   ```
+   📁 routers/
+     - livros.py    # Move router_livros para cá
+     - autores.py   # Move router_autores para cá
+   ```
+   - Importe em main.py: `from routers.livros import router_livros`
+   - Documentação continua funcionando perfeitamente!
+
+3. **Adicione metadados às tags:**
+   ```python
+   app = FastAPI(
+       openapi_tags=[
+           {"name": "livros", "description": "Operações com livros"},
+           {"name": "autores", "description": "Gerenciamento de autores"},
+       ]
+   )
+   ```
+   - Veja as descrições aparecerem no `/docs`
+
+4. **Adicione parâmetros comuns:**
+   ```python
+   @router_livros.get("/")
+   def listar_livros(
+       skip: int = 0,
+       limit: int = 10,
+       disponivel: bool = None
+   ):
+       ...
+   ```
+   - Teste diferentes combinações de paginação no `/docs`
 
 ## Próximos Passos
 

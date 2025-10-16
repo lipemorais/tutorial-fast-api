@@ -110,65 +110,119 @@ uv run fastapi dev 02-rotas-get/main.py
 
 ### 2. Teste as rotas
 
-**No navegador:**
-- http://localhost:8000/
-- http://localhost:8000/livros
-- http://localhost:8000/livros/1
-- http://localhost:8000/livros/buscar/titulo?q=python
-- http://localhost:8000/livros/filtrar/ano?ano_min=2015
+Como todas as rotas deste capítulo são GET, você pode testá-las de duas formas:
 
-**Com curl:**
+#### Opção 1: Direto no navegador
 
-```bash
-# Listar todos
-curl http://localhost:8000/livros
+**Rotas simples no navegador:**
+- http://localhost:8000/ - Informações da API
+- http://localhost:8000/livros - Lista todos os livros
+- http://localhost:8000/livros/1 - Livro com ID 1
+- http://localhost:8000/livros/buscar/titulo?q=python - Busca por "python"
+- http://localhost:8000/livros/filtrar/ano?ano_min=2015&ano_max=2020 - Filtra por ano
 
-# Buscar por ID
-curl http://localhost:8000/livros/1
+💡 **Dica:** Basta colar essas URLs no navegador e apertar Enter!
 
-# Buscar por título
-curl "http://localhost:8000/livros/buscar/titulo?q=python"
+#### Opção 2: Documentação interativa (recomendado)
 
-# Filtrar por ano
-curl "http://localhost:8000/livros/filtrar/ano?ano_min=2015&ano_max=2020"
-```
+Acesse: http://localhost:8000/docs
 
-**Dica:** As aspas no curl são necessárias quando a URL tem caracteres especiais como `?` e `&`.
+Agora você verá **5 rotas** listadas! Vamos testar cada uma usando a interface:
 
-### 3. Explore a documentação
+#### 1. GET / - Informações da API
+- Clique na rota `GET /`
+- Clique em **"Try it out"**
+- Clique em **"Execute"**
+- Veja as informações sobre todos os endpoints disponíveis
 
-Acesse http://localhost:8000/docs
+#### 2. GET /livros - Listar todos os livros
+- Expanda `GET /livros`
+- Clique em **"Try it out"**
+- Clique em **"Execute"**
+- Veja a lista com 3 livros pré-cadastrados
 
-Na documentação você pode:
-- Ver todos os parâmetros de cada rota
-- Ver os tipos esperados
-- Testar cada rota clicando em "Try it out"
-- Ver exemplos de resposta
+#### 3. GET /livros/{livro_id} - Obter livro específico (Path Parameter)
+- Expanda `GET /livros/{livro_id}`
+- Clique em **"Try it out"**
+- No campo `livro_id`, digite: **1**
+- Clique em **"Execute"**
+- Veja os detalhes do livro com ID 1
 
-## Testando validação automática
+**Experimente:**
+- Teste com `livro_id = 2` e depois `3`
+- Teste com `livro_id = 99` - veja a mensagem de "não encontrado"
+- Teste com `livro_id = abc` - veja o erro de validação automático!
 
-FastAPI valida automaticamente os tipos. Experimente:
+#### 4. GET /livros/buscar/titulo - Buscar por título (Query Parameter)
+- Expanda `GET /livros/buscar/titulo`
+- Clique em **"Try it out"**
+- No campo `q`, digite: **python**
+- Clique em **"Execute"**
+- Veja apenas livros que contêm "python" no título
 
-**Acessar com ID inválido:**
-```
-http://localhost:8000/livros/abc
-```
+**Experimente:**
+- Busque por "web"
+- Busque por "java" (não encontrará nada)
+- Deixe vazio e veja todos os livros
 
-Você receberá um erro detalhado explicando que esperava um número inteiro!
+#### 5. GET /livros/filtrar/ano - Filtrar por ano (Múltiplos Query Parameters)
+- Expanda `GET /livros/filtrar/ano`
+- Clique em **"Try it out"**
+- Em `ano_min`, digite: **2015**
+- Em `ano_max`, digite: **2020**
+- Clique em **"Execute"**
+- Veja apenas livros publicados entre 2015 e 2020
 
-**Acessar com ano inválido:**
-```
-http://localhost:8000/livros/filtrar/ano?ano_min=xyz
-```
+**Experimente:**
+- Teste com `ano_min = 2020` e `ano_max = 2024`
+- Deixe os valores padrão e veja o que acontece
 
-Novamente, erro de validação automático.
+### 3. Testando validação automática
 
-## Experimente
+O FastAPI valida automaticamente os tipos! Vamos ver isso na prática usando o `/docs`:
+
+#### Teste 1: ID inválido
+- Vá em `GET /livros/{livro_id}`
+- Em `livro_id`, tente digitar: **abc**
+- Clique em **"Execute"**
+- Você verá um erro `422 Unprocessable Entity` explicando que esperava um número inteiro!
+
+#### Teste 2: Ano inválido
+- Vá em `GET /livros/filtrar/ano`
+- Em `ano_min`, tente digitar: **xyz**
+- Clique em **"Execute"**
+- Novamente, erro de validação automático!
+
+**Observe:** O FastAPI não deixa nem chegar na sua função se os dados estiverem errados. Ele valida tudo automaticamente! 🛡️
+
+## Experimente (e teste no /docs!)
 
 1. **Adicione mais livros** à lista inicial
+   - Adicione 2-3 livros novos
+   - Teste no `/docs` se aparecem na listagem
+
 2. **Crie uma nova rota** `/livros/autor/{nome}` que busca por autor
-3. **Adicione paginação**: parâmetros `limite` e `pagina` para retornar livros em páginas
-4. **Combine filtros**: crie uma rota que permita buscar por título E ano ao mesmo tempo
+   ```python
+   @app.get("/livros/autor/{nome}")
+   def buscar_por_autor(nome: str):
+       # Seu código aqui
+       ...
+   ```
+   - Veja a nova rota aparecer automaticamente no `/docs`
+   - Teste buscando por "Luciano Ramalho"
+
+3. **Adicione paginação**: parâmetros `limite` e `pagina`
+   ```python
+   @app.get("/livros/paginado")
+   def listar_paginado(pagina: int = 1, limite: int = 10):
+       # Seu código aqui
+       ...
+   ```
+   - Teste diferentes valores de página e limite no `/docs`
+
+4. **Combine filtros**: busque por título E ano juntos
+   - Use query parameters múltiplos
+   - Teste no `/docs` com diferentes combinações
 
 ## Diferenças da Etapa Anterior
 

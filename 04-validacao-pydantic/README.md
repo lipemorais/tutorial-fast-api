@@ -88,115 +88,140 @@ As rotas importam e usam os modelos validados.
 uv run fastapi dev 04-validacao-pydantic/main.py
 ```
 
-### 2. Acesse a documentação
+### 2. Teste usando a documentação interativa
 
-http://localhost:8000/docs
+Acesse: http://localhost:8000/docs
+
+Agora você verá rotas para **Usuários** e **Produtos**. Vamos testar as validações avançadas!
+
+💡 **Dica:** As rotas GET também podem ser testadas no navegador:
+- http://localhost:8000/usuarios - Lista usuários
+- http://localhost:8000/produtos - Lista produtos
 
 ## Testando as Validações
 
-A melhor forma de aprender é testando! Use a documentação interativa em `/docs` para experimentar.
+#### 1. Criar um usuário válido
 
-### Exemplos de Dados Válidos
+1. Expanda `POST /usuarios`
+2. **"Try it out"**
+3. Use este exemplo:
+   ```json
+   {
+     "nome": "Maria Silva",
+     "email": "maria@example.com",
+     "idade": 25,
+     "site": "https://maria.dev",
+     "bio": "Desenvolvedora Python"
+   }
+   ```
+4. **"Execute"**
+5. Sucesso! ✅ Status 200
 
-**Usuário válido:**
-```json
-{
-  "nome": "Maria Silva",
-  "email": "maria@example.com",
-  "idade": 25,
-  "site": "https://maria.dev",
-  "bio": "Desenvolvedora Python"
-}
-```
+#### 2. Criar um produto válido
 
-**Produto válido:**
-```json
-{
-  "nome": "Notebook Dell",
-  "descricao": "Notebook profissional com 16GB de RAM",
-  "preco": 3500.00,
-  "estoque": 10,
-  "categoria": "Eletrônicos"
-}
-```
+1. Expanda `POST /produtos`
+2. **"Try it out"**
+3. Use este exemplo:
+   ```json
+   {
+     "nome": "Notebook Dell",
+     "descricao": "Notebook profissional com 16GB de RAM e SSD de 512GB",
+     "preco": 3500.00,
+     "estoque": 10,
+     "categoria": "Eletrônicos"
+   }
+   ```
+4. **"Execute"**
+5. Sucesso! ✅ Veja a `data_criacao` preenchida automaticamente
 
-### Exemplos de Dados Inválidos
+### 3. Testando Validações Inválidas
 
-Experimente cada um destes e observe as mensagens de erro:
+Agora vamos testar dados inválidos e ver as validações em ação!
 
-**1. Nome com números:**
-```json
-{
-  "nome": "João123",
-  "email": "joao@example.com",
-  "idade": 25
-}
-```
-❌ Erro: "O nome não pode conter números"
+#### Teste 1: Nome com números (Validador customizado)
+1. `POST /usuarios` → **"Try it out"**
+2. Envie:
+   ```json
+   {
+     "nome": "João123",
+     "email": "joao@example.com",
+     "idade": 25
+   }
+   ```
+3. ❌ Erro: "O nome não pode conter números"
 
-**2. Idade abaixo do mínimo:**
-```json
-{
-  "nome": "Ana Silva",
-  "email": "ana@example.com",
-  "idade": 17
-}
-```
-❌ Erro: idade deve ser >= 18
+#### Teste 2: Idade abaixo do mínimo (Field com ge=18)
+1. Envie:
+   ```json
+   {
+     "nome": "Ana Silva",
+     "email": "ana@example.com",
+     "idade": 17
+   }
+   ```
+2. ❌ Erro: idade deve ser >= 18
 
-**3. Email inválido:**
-```json
-{
-  "nome": "Pedro Costa",
-  "email": "pedro.email.invalido",
-  "idade": 30
-}
-```
-❌ Erro: value is not a valid email address
+#### Teste 3: Email inválido (EmailStr)
+1. Envie:
+   ```json
+   {
+     "nome": "Pedro Costa",
+     "email": "pedro.email.invalido",
+     "idade": 30
+   }
+   ```
+2. ❌ Erro: value is not a valid email address
 
-**4. Site sem protocolo:**
-```json
-{
-  "nome": "Maria",
-  "email": "maria@example.com",
-  "idade": 28,
-  "site": "maria.com"
-}
-```
-❌ Erro: site deve começar com http:// ou https://
+#### Teste 4: Site sem protocolo (Pattern/Regex)
+1. Envie:
+   ```json
+   {
+     "nome": "Maria",
+     "email": "maria@example.com",
+     "idade": 28,
+     "site": "maria.com"
+   }
+   ```
+2. ❌ Erro: site deve começar com http:// ou https://
 
-**5. Bio com palavra proibida:**
-```json
-{
-  "nome": "José Santos",
-  "email": "jose@example.com",
-  "idade": 35,
-  "bio": "Confira meu spam de produtos"
-}
-```
-❌ Erro: A bio não pode conter a palavra "spam"
+#### Teste 5: Bio com palavra proibida (Validador customizado)
+1. Envie:
+   ```json
+   {
+     "nome": "José Santos",
+     "email": "jose@example.com",
+     "idade": 35,
+     "bio": "Confira meu spam de produtos"
+   }
+   ```
+2. ❌ Erro: A bio não pode conter a palavra "spam"
 
-**6. Preço negativo:**
-```json
-{
-  "nome": "Produto Teste",
-  "descricao": "Descrição do produto aqui",
-  "preco": -10.00,
-  "categoria": "Teste"
-}
-```
-❌ Erro: preco deve ser > 0
+#### Teste 6: Preço negativo (Field com gt=0)
+1. `POST /produtos` → **"Try it out"**
+2. Envie:
+   ```json
+   {
+     "nome": "Produto Teste",
+     "descricao": "Descrição completa do produto aqui",
+     "preco": -10.00,
+     "categoria": "Teste"
+   }
+   ```
+3. ❌ Erro: preco deve ser > 0
 
-**7. Descrição muito curta:**
-```json
-{
-  "nome": "Produto",
-  "descricao": "Curto",
-  "preco": 100.00,
-  "categoria": "Teste"
-}
-```
-❌ Erro: descrição deve ter pelo menos 10 caracteres
+#### Teste 7: Descrição muito curta (Field com min_length=10)
+1. Envie:
+   ```json
+   {
+     "nome": "Produto",
+     "descricao": "Curto",
+     "preco": 100.00,
+     "categoria": "Teste"
+   }
+   ```
+2. ❌ Erro: descrição deve ter pelo menos 10 caracteres
+
+**Observe:** Todas as validações são mostradas claramente na resposta! O Pydantic fornece mensagens de erro detalhadas. 🛡️
 
 ## Recursos Avançados Demonstrados
 
@@ -253,44 +278,66 @@ raise HTTPException(
 
 Retorna erro HTTP com mensagem customizada.
 
-## Testando com curl
+### 4. Explorando a Documentação
 
-```bash
-# Criar usuário válido
-curl -X POST http://localhost:8000/usuarios \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "Maria Silva",
-    "email": "maria@example.com",
-    "idade": 25
-  }'
+Olhe atentamente no `/docs` e observe:
 
-# Criar usuário inválido (idade < 18)
-curl -X POST http://localhost:8000/usuarios \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "Ana",
-    "email": "ana@example.com",
-    "idade": 16
-  }'
+1. **Schemas na parte inferior:**
+   - Role até o final da página
+   - Veja os modelos `Usuario` e `Produto` detalhados
+   - Veja todos os campos, tipos e restrições!
 
-# Criar produto válido
-curl -X POST http://localhost:8000/produtos \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "Notebook",
-    "descricao": "Notebook para desenvolvimento",
-    "preco": 3500.00,
-    "categoria": "Eletrônicos"
-  }'
-```
+2. **Validações visíveis:**
+   - Campos obrigatórios marcados com `*`
+   - Tipos de dados mostrados (string, integer, number)
+   - Valores mínimos/máximos documentados
+   - Patterns (regex) mostrados
 
-## Experimente
+3. **Response Model:**
+   - Todas as respostas seguem o modelo `RespostaPadrao`
+   - Sempre tem: `sucesso`, `mensagem`, `dados`
+   - Isso garante consistência na API!
 
-1. **Adicione um validador** que garante que o nome do produto não contém apenas espaços
-2. **Crie um campo `desconto`** que só aceita valores entre 0 e 100 (porcentagem)
-3. **Adicione validação** para garantir que o email do usuário não é de um domínio específico (ex: não aceitar emails @example.com)
-4. **Crie um modelo `Pedido`** que valida que o total é maior que 0 e que a lista de itens não está vazia
+## Experimente (e teste no /docs!)
+
+1. **Validador para nome sem apenas espaços:**
+   ```python
+   @field_validator('nome')
+   @classmethod
+   def nome_nao_vazio(cls, valor: str) -> str:
+       if not valor.strip():
+           raise ValueError('O nome não pode ser vazio')
+       return valor
+   ```
+   - Teste no `/docs` enviando "   " (apenas espaços)
+
+2. **Campo desconto com validação:**
+   ```python
+   desconto: float = Field(ge=0, le=100, description="Desconto em porcentagem")
+   ```
+   - Teste com 50 (ok), 101 (erro), -5 (erro)
+
+3. **Validar domínio de email:**
+   ```python
+   @field_validator('email')
+   @classmethod
+   def validar_dominio(cls, valor: str) -> str:
+       if valor.endswith('@example.com'):
+           raise ValueError('Domínio example.com não permitido')
+       return valor
+   ```
+   - Teste com "teste@example.com" - deve dar erro!
+
+4. **Modelo Pedido complexo:**
+   ```python
+   class Pedido(BaseModel):
+       itens: list[str] = Field(min_length=1)
+       total: float = Field(gt=0)
+   ```
+   - Crie a rota `POST /pedidos`
+   - Veja aparecer no `/docs` automaticamente
+   - Teste com lista vazia (erro)
+   - Teste com total 0 (erro)
 
 ## Diferenças da Etapa Anterior
 
