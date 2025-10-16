@@ -9,6 +9,4 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = [
-    "httpie>=3.2.0",
-]
+dev = []
