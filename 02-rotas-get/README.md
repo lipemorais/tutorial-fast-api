@@ -111,7 +111,7 @@ cd 02-rotas-get
 ### 2. Execute o servidor
 
 ```bash
-uvicorn main:app --reload
+fastapi dev main.py
 ```
 
 ### 3. Teste as rotas

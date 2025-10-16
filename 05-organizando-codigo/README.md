@@ -101,7 +101,7 @@ cd 05-organizando-codigo
 ### 2. Execute o servidor
 
 ```bash
-uvicorn main:app --reload
+fastapi dev main.py
 ```
 
 ### 3. Explore a documentação

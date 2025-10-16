@@ -53,13 +53,13 @@ cd 01-hello-world
 ### 2. Execute o servidor
 
 ```bash
-uvicorn main:app --reload
+fastapi dev main.py
 ```
 
 O que significa cada parte:
-- `uvicorn` - servidor ASGI para rodar aplicações Python
-- `main:app` - arquivo `main.py`, variável `app`
-- `--reload` - reinicia automaticamente quando você modificar o código
+- `fastapi dev` - comando do FastAPI CLI para desenvolvimento
+- `main.py` - arquivo Python que contém sua aplicação
+- O modo `dev` já inclui auto-reload automático quando você modificar o código
 
 ### 3. Acesse a API
 

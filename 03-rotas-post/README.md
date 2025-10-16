@@ -94,7 +94,7 @@ cd 03-rotas-post
 ### 2. Execute o servidor
 
 ```bash
-uvicorn main:app --reload
+fastapi dev main.py
 ```
 
 ### 3. Testando rotas POST

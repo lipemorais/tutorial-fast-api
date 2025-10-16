@@ -729,7 +729,7 @@ wheels = [
 [[package]]
 name = "tutorial-fastapi-pybr2025"
 version = "1.0.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "fastapi" },
     { name = "uvicorn", extra = ["standard"] },
