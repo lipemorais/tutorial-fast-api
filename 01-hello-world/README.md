@@ -67,32 +67,60 @@ Você deve ver:
 }
 ```
 
-### 3. Explore a documentação automática
+### 3. Explore a documentação automática (Swagger UI)
 
-FastAPI gera documentação interativa automaticamente! Acesse:
+**Essa é a mágica do FastAPI!** Acesse: http://localhost:8000/docs
 
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
+A documentação foi gerada automaticamente sem você escrever uma linha de documentação! 🎉
 
-Na página `/docs` você pode:
-- Ver todas as rotas disponíveis
-- Testar as rotas diretamente pelo navegador
-- Ver a estrutura dos dados
+#### Como usar a documentação interativa:
 
-## Testando com curl
+1. **Veja sua rota listada:**
+   - Você verá uma seção com `GET /` (sua rota raiz)
+   - Clique nela para expandir
 
-Se preferir linha de comando:
+2. **Teste a rota:**
+   - Clique no botão **"Try it out"**
+   - Clique em **"Execute"**
+   - Veja a resposta aparecer na tela!
 
-```bash
-curl http://localhost:8000
-```
+3. **O que você verá:**
+   - **Request URL**: O endereço que foi chamado
+   - **Response body**: O JSON que a API retornou
+   - **Response headers**: Informações técnicas da resposta
+   - **Status code**: `200` significa sucesso!
+
+#### Documentação alternativa (ReDoc)
+
+Se quiser um formato diferente: http://localhost:8000/redoc
 
 ## Experimente
 
-Modifique o código para:
-1. Mudar a mensagem retornada
-2. Adicionar mais campos no dicionário (ex: `"autor": "Seu Nome"`)
-3. Criar uma segunda rota em `@app.get("/sobre")` com informações sobre você
+Modifique o código e teste usando a documentação interativa (`/docs`):
+
+1. **Mude a mensagem:**
+   - Altere a mensagem retornada para algo seu
+   - Salve o arquivo (o servidor recarrega automaticamente!)
+   - Atualize a página `/docs` e teste novamente
+
+2. **Adicione mais campos:**
+   ```python
+   return {
+       "mensagem": "Olá!",
+       "autor": "Seu Nome",
+       "ano": 2025
+   }
+   ```
+   - Veja como o JSON retornado muda no `/docs`
+
+3. **Crie uma segunda rota:**
+   ```python
+   @app.get("/sobre")
+   def sobre():
+       return {"nome": "Seu Nome", "idade": 25}
+   ```
+   - Veja a nova rota aparecer automaticamente no `/docs`
+   - Teste ela clicando em "Try it out"!
 
 ## Próxima Etapa
 
