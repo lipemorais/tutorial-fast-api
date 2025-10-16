@@ -1,0 +1,19 @@
+[project]
+name = "tutorial-fastapi-pybr2025"
+version = "1.0.0"
+description = "Tutorial de FastAPI para Python Brasil 2025"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpie>=3.2.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
