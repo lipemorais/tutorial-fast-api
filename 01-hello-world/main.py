@@ -16,8 +16,8 @@ def raiz():
     return {"mensagem": "Olá, Python Brasil 2025! 🐍"}
 
 
-# Para rodar esta API, execute no terminal:
-# uvicorn main:app --reload
+# Para rodar esta API, execute no terminal (a partir da raiz do projeto):
+# uv run fastapi dev 01-hello-world/main.py
 #
 # Depois acesse no navegador:
 # http://localhost:8000
