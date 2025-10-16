@@ -77,12 +77,17 @@ cd tutorial-fast-api
 uv sync
 ```
 
-Depois ative o ambiente virtual:
+Pronto! O `uv sync` já criou o ambiente virtual e instalou todas as dependências.
+
+### 4. Executar os exemplos
+
+Use `uv run` para executar os comandos a partir da raiz do projeto (não precisa fazer `cd` ou ativar o ambiente virtual):
+
 ```bash
-source .venv/bin/activate  # No Windows: .venv\Scripts\activate
+uv run fastapi dev 01-hello-world/main.py
 ```
 
-> **Dica:** Você também pode usar `uv run <comando>` para executar comandos sem precisar ativar o ambiente virtual manualmente.
+> **Nota:** Se preferir, você também pode ativar o ambiente virtual manualmente com `source .venv/bin/activate` (Linux/Mac) ou `.venv\Scripts\activate` (Windows) e rodar os comandos diretamente.
 
 ## Como usar este tutorial
 

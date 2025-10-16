@@ -85,19 +85,13 @@ def deletar_tarefa(tarefa_id: int):
 
 ## Como executar
 
-### 1. Entre na pasta
+### 1. Execute o servidor (a partir da raiz do projeto)
 
 ```bash
-cd 03-rotas-post
+uv run fastapi dev 03-rotas-post/main.py
 ```
 
-### 2. Execute o servidor
-
-```bash
-fastapi dev main.py
-```
-
-### 3. Testando rotas POST
+### 2. Testando rotas POST
 
 **Opção 1: Documentação Interativa (MAIS FÁCIL)**
 

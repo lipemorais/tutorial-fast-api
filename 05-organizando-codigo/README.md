@@ -92,19 +92,13 @@ Arquivo principal que:
 
 ## Como executar
 
-### 1. Entre na pasta
+### 1. Execute o servidor (a partir da raiz do projeto)
 
 ```bash
-cd 05-organizando-codigo
+uv run fastapi dev 05-organizando-codigo/main.py
 ```
 
-### 2. Execute o servidor
-
-```bash
-fastapi dev main.py
-```
-
-### 3. Explore a documentação
+### 2. Explore a documentação
 
 http://localhost:8000/docs
 

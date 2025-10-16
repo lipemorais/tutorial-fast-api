@@ -102,19 +102,13 @@ Se não passar os parâmetros, usa os padrões (2000 e 2024).
 
 ## Como executar
 
-### 1. Entre na pasta
+### 1. Execute o servidor (a partir da raiz do projeto)
 
 ```bash
-cd 02-rotas-get
+uv run fastapi dev 02-rotas-get/main.py
 ```
 
-### 2. Execute o servidor
-
-```bash
-fastapi dev main.py
-```
-
-### 3. Teste as rotas
+### 2. Teste as rotas
 
 **No navegador:**
 - http://localhost:8000/
@@ -141,7 +135,7 @@ curl "http://localhost:8000/livros/filtrar/ano?ano_min=2015&ano_max=2020"
 
 **Dica:** As aspas no curl são necessárias quando a URL tem caracteres especiais como `?` e `&`.
 
-### 4. Explore a documentação
+### 3. Explore a documentação
 
 Acesse http://localhost:8000/docs
 

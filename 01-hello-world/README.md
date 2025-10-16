@@ -44,24 +44,19 @@ def raiz():
 
 ## Como executar
 
-### 1. Entre na pasta desta etapa
+### 1. Execute o servidor (a partir da raiz do projeto)
 
 ```bash
-cd 01-hello-world
-```
-
-### 2. Execute o servidor
-
-```bash
-fastapi dev main.py
+uv run fastapi dev 01-hello-world/main.py
 ```
 
 O que significa cada parte:
+- `uv run` - executa o comando usando o ambiente virtual do projeto
 - `fastapi dev` - comando do FastAPI CLI para desenvolvimento
 - `main.py` - arquivo Python que contém sua aplicação
 - O modo `dev` já inclui auto-reload automático quando você modificar o código
 
-### 3. Acesse a API
+### 2. Acesse a API
 
 Abra seu navegador em: http://localhost:8000
 
@@ -72,7 +67,7 @@ Você deve ver:
 }
 ```
 
-### 4. Explore a documentação automática
+### 3. Explore a documentação automática
 
 FastAPI gera documentação interativa automaticamente! Acesse:
 

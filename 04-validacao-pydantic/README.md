@@ -82,19 +82,13 @@ As rotas importam e usam os modelos validados.
 
 ## Como executar
 
-### 1. Entre na pasta
+### 1. Execute o servidor (a partir da raiz do projeto)
 
 ```bash
-cd 04-validacao-pydantic
+uv run fastapi dev 04-validacao-pydantic/main.py
 ```
 
-### 2. Execute o servidor
-
-```bash
-fastapi dev main.py
-```
-
-### 3. Acesse a documentação
+### 2. Acesse a documentação
 
 http://localhost:8000/docs
 
