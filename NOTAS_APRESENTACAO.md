@@ -24,12 +24,11 @@
 
 ### Terminais/Abas Pré-Abertos
 1. Terminal para rodar uvicorn
-2. Terminal para comandos curl/httpie
-3. Navegador com abas:
+2. Navegador com abas:
    - http://localhost:8000/docs (Swagger)
    - http://localhost:8000/redoc
    - https://fastapi.tiangolo.com (documentação oficial)
-4. Editor de código com o projeto aberto
+3. Editor de código com o projeto aberto
 
 ---
 
@@ -328,31 +327,7 @@
 
 ---
 
-### 🧪 Testando APIs (20 min) - 11:25-11:45
-**Objetivos:**
-- Ferramentas além do navegador
-- curl e httpie
-
-**Roteiro:**
-1. Revisão: Swagger UI (5 min)
-   - "É a melhor forma para desenvolvimento"
-
-2. curl (7 min)
-   - Mostrar comandos básicos
-   - GET simples
-   - POST com JSON
-   - Usar scripts prontos
-
-3. httpie (8 min)
-   - "Mais amigável que curl"
-   - Mostrar sintaxe
-   - Rodar script de testes
-
-**Dica:** Não entrar em muitos detalhes, é só para eles conhecerem
-
----
-
-### 🎯 Recapitulação e Próximos Passos (10 min) - 11:45-11:55
+### 🎯 Recapitulação e Próximos Passos (10 min) - 11:25-11:35
 **Objetivos:**
 - Consolidar aprendizado
 - Inspirar a continuar
@@ -376,7 +351,7 @@
 
 ---
 
-### ❓ Perguntas e Respostas (35 min) - 11:55-12:30
+### ❓ Perguntas e Respostas (55 min) - 11:35-12:30
 - Responder dúvidas
 - Ajudar individualmente
 - Circular pela sala
@@ -459,7 +434,6 @@
 1. **Link do repositório GitHub**
    - Código completo
    - READMEs de cada etapa
-   - Scripts de teste
 
 2. **Recursos adicionais:**
    - Documentação FastAPI: https://fastapi.tiangolo.com

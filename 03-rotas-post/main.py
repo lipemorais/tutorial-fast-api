@@ -142,13 +142,7 @@ def deletar_tarefa(tarefa_id: int):
 
 # Para rodar: uvicorn main:app --reload
 #
-# Para testar POST, você precisa de uma ferramenta como:
-# - Documentação interativa: http://localhost:8000/docs
-# - curl (linha de comando)
-# - httpie (linha de comando, mais amigável)
-# - Postman/Insomnia (aplicativos gráficos)
+# Para testar as rotas POST/PUT/DELETE, use a documentação interativa:
+# http://localhost:8000/docs
 #
-# Exemplo com curl:
-# curl -X POST http://localhost:8000/tarefas \
-#   -H "Content-Type: application/json" \
-#   -d '{"titulo":"Minha tarefa","descricao":"Descrição aqui"}'
+# Lá você pode testar todas as rotas clicando em "Try it out"!
