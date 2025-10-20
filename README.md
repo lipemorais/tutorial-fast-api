@@ -21,7 +21,7 @@ Senior Software Engineer com vários anos de experiência em desenvolvimento de 
 - 🏆 **PSF Community Service Award** - Q2 2019
 - 🏵️ **Prêmio Dorneles Treméa/Jean Ferri** - Associação Python Brasil (2020)
 
-Felipe tem mais de 1 ano de experiência prática com FastAPI, é apaixonado por testes, desenvolvimento de APIs e por fazer a comunidade Python crescer através de ensino e contribuições open source.
+Felipe tem mais de 12 anos de experiência com construção de soluções para internet e vem trabalhando há quase 2 anos com FastAPI, é apaixonado por testes, desenvolvimento de APIs e por fazer a comunidade Python crescer através de ensino e contribuições open source.
 
 **Contato:**
 - 💼 [LinkedIn](https://www.linkedin.com/in/felipe-de-morais)
