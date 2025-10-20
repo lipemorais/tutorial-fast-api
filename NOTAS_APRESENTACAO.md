@@ -11,7 +11,6 @@
 ### Dia Anterior
 - [ ] Testar todas as etapas do tutorial
 - [ ] Verificar se as dependências estão atualizadas
-- [ ] Preparar máquina backup (se possível)
 - [ ] Revisar este documento
 
 ### 1 Hora Antes
@@ -23,7 +22,7 @@
 - [ ] Desligar notificações do sistema
 
 ### Terminais/Abas Pré-Abertos
-1. Terminal para rodar uvicorn
+1. Terminal para rodar fastapi
 2. Navegador com abas:
    - http://localhost:8000/docs (Swagger)
    - http://localhost:8000/redoc
@@ -95,33 +94,41 @@
 - Instalar dependências
 
 **Roteiro:**
-1. Criar pasta do projeto (2 min)
+1. Instalar uv (se necessário) (5 min)
    ```bash
-   mkdir meu-tutorial-fastapi
-   cd meu-tutorial-fastapi
-   ```
+   # macOS/Linux
+   curl -LsSf https://astral.sh/uv/install.sh | sh
 
-2. Instalar uv (se necessário) (3 min)
-   - Dar o comando para copiar
+   # Windows
+   powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+   ```
+   - Compartilhar o comando no chat/slides
    - Circular pela sala ajudando
 
-3. Criar ambiente virtual (5 min)
+2. Clonar/baixar o repositório (3 min)
    ```bash
-   uv venv
-   source .venv/bin/activate  # Mac/Linux
-   .venv\Scripts\activate     # Windows
+   git clone <url-do-repositorio>
+   # OU baixar o ZIP e extrair
+   ```
+   - Fornecer a URL do repositório
+
+3. Entrar na pasta do projeto (1 min)
+   ```bash
+   cd tutorial-fast-api
    ```
 
-4. Instalar FastAPI e Uvicorn (5 min)
+4. Instalar dependências com uv sync (6 min)
    ```bash
-   uv pip install fastapi uvicorn[standard]
+   uv sync
    ```
+   - Isso cria o ambiente virtual E instala as dependências automaticamente
+   - Não precisa ativar manualmente, use `uv run` para executar comandos
 
-**Dica:** Enquanto instala, falar sobre o que é cada coisa:
-- FastAPI: o framework
-- Uvicorn: servidor que roda a aplicação
+**Dica:** Enquanto instala, explicar:
+- `uv`: gerenciador de pacotes Python moderno e rápido
+- `uv sync`: cria ambiente virtual + instala dependências do pyproject.toml
+- FastAPI já vem instalado com todas as dependências necessárias
 
-**Ter pronto:** USB com instaladores offline (caso internet falhe)
 
 ---
 
@@ -147,9 +154,13 @@
 
 2. Rodar servidor (3 min)
    ```bash
-   uvicorn main:app --reload
+   uv run fastapi dev 01-hello-world/main.py
    ```
-   - Explicar cada parte do comando
+   - Explicar cada parte do comando:
+     - `uv run`: executa usando o ambiente virtual do projeto
+     - `fastapi dev`: comando do FastAPI CLI para desenvolvimento
+     - `01-hello-world/main.py`: arquivo da aplicação
+     - Modo `dev` já inclui auto-reload automático
 
 3. Testar no navegador (2 min)
    - Abrir http://localhost:8000
