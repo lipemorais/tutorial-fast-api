@@ -1,4 +1,5 @@
 # Etapa 03: Rotas POST - Recebendo dados do cliente
+from http import HTTPStatus
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -76,7 +77,7 @@ def obter_tarefa(tarefa_id: int):
     return {"erro": "Tarefa não encontrada"}
 
 
-@app.post("/tarefas")
+@app.post("/tarefas", status_code=HTTPStatus.CREATED,)
 def criar_tarefa(tarefa: Tarefa):
     """
     Cria uma nova tarefa
