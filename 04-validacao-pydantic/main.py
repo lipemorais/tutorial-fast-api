@@ -1,4 +1,5 @@
 # Etapa 04: Validação Avançada com Pydantic
+from http import HTTPStatus
 
 from fastapi import FastAPI, HTTPException
 from models import Usuario, Produto, RespostaPadrao
@@ -29,7 +30,11 @@ def raiz():
     }
 
 
-@app.post("/usuarios", response_model=RespostaPadrao)
+@app.post(
+    "/usuarios",
+    status_code=HTTPStatus.CREATED,
+    response_model=RespostaPadrao,
+)
 def criar_usuario(usuario: Usuario):
     """
     Cria um novo usuário com validações:
