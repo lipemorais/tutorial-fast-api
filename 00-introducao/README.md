@@ -68,7 +68,7 @@ A versão 0.1.0 foi lançada e rapidamente ganhou atenção da comunidade.
 ### 1. **Chegou no Momento Certo**
 Python 3.6+ tinha introduzido type hints, e Python 3.7+ melhorou muito o `async/await`. FastAPI aproveitou essas features modernas.
 
-### 2. **Desenvolvedor Productivity**
+### 2. **Produtividade no desenvolvimento**
 ```python
 # Com FastAPI, isso valida automaticamente:
 @app.post("/users/")
@@ -122,7 +122,7 @@ Ao final, você terá as bases para criar qualquer API em Python!
 - 🌟 FastAPI foi um projeto solo que virou fenômeno global
 - 📚 A documentação tem exemplos em vários idiomas
 - 🏢 Microsoft usa FastAPI internamente e contribui para o projeto
-- 🚀 Em 2023, Sebastián criou a Tiangolo (empresa) para manter o projeto
+- 🚀 Em 2023, Sebastián criou a FastAPI Labs empresa que mantém o projeto
 - 🎓 FastAPI é ensinado em universidades e bootcamps ao redor do mundo
 
 ---
