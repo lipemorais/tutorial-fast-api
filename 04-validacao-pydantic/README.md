@@ -70,7 +70,7 @@ Organizamos os modelos em um arquivo separado:
 - Bio: máximo 500 caracteres, sem palavras proibidas
 
 **Produto:**
-- Nome: 3-100 caracteres, com pelo menos um caractere alfanumérico
+- Nome: 3-100 caracteres, com pelo menos um caracter alfanumérico
 - Descrição: 10-1000 caracteres
 - Preço: maior que 0, máximo 1 milhão
 - Estoque: não pode ser negativo
@@ -115,7 +115,7 @@ Agora você verá rotas para **Usuários** e **Produtos**. Vamos testar as valid
    }
    ```
 4. **"Execute"**
-5. Sucesso! ✅ Status 200
+5. Criado! ✅ Status 201
 
 #### 2. Criar um produto válido
 
@@ -132,7 +132,7 @@ Agora você verá rotas para **Usuários** e **Produtos**. Vamos testar as valid
    }
    ```
 4. **"Execute"**
-5. Sucesso! ✅ Veja a `data_criacao` preenchida automaticamente
+5. Criado! ✅ Veja a `data_criacao` preenchida automaticamente
 
 ### 3. Testando Validações Inválidas
 
