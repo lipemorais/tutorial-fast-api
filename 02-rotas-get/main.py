@@ -24,8 +24,8 @@ def raiz():
         "mensagem": "Bem-vindo à API de Livros!",
         "endpoints": {
             "livros": "/livros",
-            "livro_por_id": "/livros/{id}",
-            "buscar": "/livros/buscar?titulo=...",
+            "livro_por_id": "/livros/1",
+            "buscar": "/livros/buscar/titulo?q=fluente",
         }
     }
 

@@ -36,7 +36,14 @@ Aprender a:
 
 Criamos uma API simples de livros com 5 rotas:
 
-### 1. Rota raiz - Informações da API
+### 1. Execute o servidor (a partir da raiz do projeto)
+
+```bash
+uv run fastapi dev 02-rotas-get/main.py
+```
+
+
+### 2. Rota raiz - Informações da API
 
 ```python
 @app.get("/")
@@ -47,7 +54,7 @@ def raiz():
     }
 ```
 
-### 2. Listar todos os livros
+### 3. Listar todos os livros
 
 ```python
 @app.get("/livros")
@@ -55,7 +62,7 @@ def listar_livros():
     return {"total": len(livros), "livros": livros}
 ```
 
-### 3. Obter livro por ID (Path Parameter)
+### 4. Obter livro por ID (Path Parameter)
 
 ```python
 @app.get("/livros/{livro_id}")
@@ -69,7 +76,7 @@ def obter_livro(livro_id: int):
 - Se você acessar `/livros/1` → funciona (1 é um número)
 - Se você acessar `/livros/abc` → FastAPI retorna erro automaticamente!
 
-### 4. Buscar por título (Query Parameter)
+### 5. Buscar por título (Query Parameter)
 
 ```python
 @app.get("/livros/buscar/titulo")
@@ -84,7 +91,7 @@ def buscar_por_titulo(q: str = ""):
 /livros/buscar/titulo?q=python
 ```
 
-### 5. Filtrar por ano (Múltiplos Query Parameters)
+### 6. Filtrar por ano (Múltiplos Query Parameters)
 
 ```python
 @app.get("/livros/filtrar/ano")
