@@ -254,7 +254,7 @@ data_criacao: datetime = Field(
 ### 4. Response Model
 
 ```python
-@app.post("/usuarios", response_model=RespostaPadrao)
+@app.post("/usuarios", status_code=HTTPStatus.CREATED, response_model=RespostaPadrao)
 def criar_usuario(usuario: Usuario):
     return RespostaPadrao(
         sucesso=True,
