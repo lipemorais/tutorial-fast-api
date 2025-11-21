@@ -18,8 +18,8 @@ app = FastAPI(
     description="API para gerenciar livros e autores de uma biblioteca",
     version="2.0.0",
     contact={
-        "name": "Python Brasil 2025",
-        "url": "https://pythonbrasil.org.br"
+        "name": "Python sul 2025",
+        "url": "https://pythonsul.org.br"
     }
 )
 

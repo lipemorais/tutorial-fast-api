@@ -27,7 +27,7 @@ class Tarefa(BaseModel):
             "examples": [
                 {
                     "titulo": "Estudar FastAPI",
-                    "descricao": "Completar o tutorial da Python Brasil",
+                    "descricao": "Completar o tutorial da Python Sul",
                     "concluida": False
                 }
             ]

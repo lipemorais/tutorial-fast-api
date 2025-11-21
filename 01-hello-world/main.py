@@ -13,7 +13,7 @@ app = FastAPI()
 @app.get("/")
 def raiz():
     """Rota raiz - retorna uma mensagem de boas-vindas"""
-    return {"mensagem": "Olá, Python Brasil 2025! 🐍"}
+    return {"mensagem": "Olá, Python Sul 2025! 🐍"}
 
 
 # Para rodar esta API, execute no terminal (a partir da raiz do projeto):
